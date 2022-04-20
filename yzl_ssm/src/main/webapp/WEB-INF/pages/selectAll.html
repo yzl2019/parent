@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>所有</title>
+</head>
+<body>
+    <div id="app" style="margin-left: 30%;margin-top: 100px">
+        <table border="1px">
+            <tr>
+                <td>编号</td>
+                <td>账户</td>
+                <td>密码</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr th:each="user:${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.password}"></td>
+               <!-- <td><a th:onclick="'javascript:alert('+${user.id}+');'">删除</a> </td>-->
+                <td><a th:onclick="'javascript:deleteById('+${user.id}+');'">删除</a> </td>
+                <td><a th:onclick="'javascript:updataById('+${user.id}+');'">修改</a> </td>
+
+            </tr>
+        </table>
+    </div>
+<script>
+    function deleteById(id){
+       location.href="/user/deleteById/"+id;
+    }
+    function updataById(id) {
+        location.href="/user/updataById/"+id;
+    }
+</script>
+</body>
+</html>
